@@ -6,8 +6,11 @@ const app = express();
 
 const models = require('./models');
 
-// Replace '' with your MongoDB Atlas connection string
-const MONGODB_ATLAS_CONNECTION_STRING = '';
+if (process.env.NODE_ENV !== 'production') {
+  require('../keys');
+}
+
+const MONGODB_ATLAS_CONNECTION_STRING = process.env.MONGODB_ATLAS_CONNECTION_STRING;
 
 if (!MONGODB_ATLAS_CONNECTION_STRING) {
   throw new Error('You must provide a MongoDB Atlas connection string.');
