@@ -3,8 +3,28 @@ import { graphql } from 'react-apollo';
 import query from '../queries/currentUser';
 
 class Header extends Component {
+  renderButtons() {
+    const { loading, user } = this.props.data;
+
+    if (loading) {
+      return;
+    }
+
+    if (user) {
+      return <div>Logout</div>;
+    } else {
+      return <div>Signup or Login</div>;
+    }
+  }
+
   render() {
-    return <div>Header</div>;
+    return (
+      <nav>
+        <div className="nav-wrapper">
+          {this.renderButtons()}
+        </div>
+      </nav>
+    );
   }
 }
 
