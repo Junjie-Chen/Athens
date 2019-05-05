@@ -5,6 +5,10 @@ import query from '../queries/currentUser';
 import mutation from '../mutations/logout';
 
 class Header extends Component {
+  onUserLogout() {
+
+  }
+
   renderButtons() {
     const { loading, user } = this.props.data;
 
@@ -15,7 +19,7 @@ class Header extends Component {
     if (user) {
       return (
         <li>
-          <a>Logout</a>
+          <a onClick={this.onUserLogout.bind(this)}>Logout</a>
         </li>
       );
     } else {
