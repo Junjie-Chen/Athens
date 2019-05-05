@@ -14,6 +14,9 @@ class SignupForm extends Component {
       refetchQueries: [
         { query }
       ]
+    })
+    .catch(res => {
+      const errors = res.graphQLErrors.map(error => error.message);
     });
   }
 
