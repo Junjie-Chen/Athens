@@ -5,6 +5,12 @@ import query from '../queries/currentUser';
 import mutation from '../mutations/signup';
 
 class SignupForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { errors: [] };
+  }
+
   onSubmit({ email, password }) {
     this.props.mutate({
       variables: {
@@ -17,6 +23,8 @@ class SignupForm extends Component {
     })
     .catch(res => {
       const errors = res.graphQLErrors.map(error => error.message);
+
+      this.setState({ errors });
     });
   }
 
@@ -24,7 +32,10 @@ class SignupForm extends Component {
     return (
       <div>
         <h3>Sign Up</h3>
-        <AuthForm onSubmit={this.onSubmit.bind(this)} />
+        <AuthForm
+          errors={this.state.errors}
+          onSubmit={this.onSubmit.bind(this)}
+        />
       </div>
     );
   }
