@@ -12,7 +12,11 @@ class Header extends Component {
     }
 
     if (user) {
-      return <div>Logout</div>;
+      return (
+        <li>
+          <a>Logout</a>
+        </li>
+      );
     } else {
       return (
         <div>
