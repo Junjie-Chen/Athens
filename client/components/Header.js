@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 import query from '../queries/currentUser';
+import mutation from '../mutations/logout';
 
 class Header extends Component {
   renderButtons() {
@@ -43,4 +44,6 @@ class Header extends Component {
   }
 }
 
-export default graphql(query)(Header);
+export default graphql(mutation)(
+  graphql(query)(Header)
+);
