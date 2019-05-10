@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import query from '../queries/currentUser';
 
 class RequireAuth extends Component {
   render() {
@@ -6,4 +8,4 @@ class RequireAuth extends Component {
   }
 }
 
-export default RequireAuth;
+export default graphql(query)(RequireAuth);
